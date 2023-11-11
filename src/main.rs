@@ -17,7 +17,7 @@ struct Post {
 #[derive(Clone)]
 struct ServerData {
     posts: Vec<Post>,
-    slice_cache: HashMap<(u32, u32), String>, // user asks for posts 0-10 (measured from most recent). take that slice, json it, then spit it out.
+    slice_cache: HashMap<(u32, u32), (String, String)>, // user asks for posts 0-10 (measured from most recent). take that slice, json it, then spit it out.
     posts_json: String,
     current_id: u64,
     posts_hash_b64: String // base64. theoretically i could instead do a "post version" which is just how many /writes have happened, but this seems fragile
